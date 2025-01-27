@@ -35,7 +35,6 @@ fclean: clean signature
 re: fclean all signature
 
 signature:
-	@clear
 	@echo ""
 	@echo ""
 	@echo ""

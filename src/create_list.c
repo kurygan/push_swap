@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 05:06:37 by mkettab           #+#    #+#             */
-/*   Updated: 2025/01/15 22:23:19 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/01/27 22:16:43 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,26 @@
 int	ft_atoi(char *str)
 {
 	int nbr;
+	int index;
+	int sign;
 	
-	nbr = 1;
-	if (*str++ == '-')
-		nbr = -nbr;
-	while (*str >= '0' && *str <= '9')
+	nbr = 0;
+	sign = 1;
+	if (*str == '+' || *str == '-')
 	{
-		nbr *= (*str) - '0';
-		nbr *= 10;
+		if(*str == '-')
+			sign = -sign;
 		str++;
 	}
-	return (nbr);
+	while (*str >= '0' && *str <= '9')
+	{
+		index = (*str) - '0';
+		nbr = (nbr * 10) + index;
+		str++;
+	}
+	if (*str)
+		exit(1);
+	return (nbr * sign);
 }
 
 t_list *lstgetlast(t_list *list)
@@ -38,21 +47,48 @@ t_list *lstgetlast(t_list *list)
 	return (last);
 }
 
-void	lstadd(t_list *list, int temp)
+void	lstadd(t_list **list, int temp)
 {
 	t_list *last;
 	t_list *new;
 
-	last = lstgetlast(list);
 	new = malloc(sizeof(t_list));
 	if(!new)
 		return ;
-	new->next = NULL;
 	new->i = temp;
-	last->next = new;
+	new->next = NULL;
+	new->prev = NULL;
+	if (!(*list))
+		*list = new;
+	else
+	{
+		last = lstgetlast(*list);
+		last->next = new;
+		new->prev = last;
+		(*list)->prev = new;
+	}
+}
+bool if_duplicate(t_list **list)
+{
+	t_list *current;
+	t_list *verif;
+	
+	current = *list;
+	while (current)
+	{
+		verif = current->next;
+		while (verif)
+		{
+			if (verif->i == current->i)
+				return (true);
+			verif = verif->next;
+		}
+		current = current->next;
+	}
+	return (false);
 }
 
-void	create_list(char **str, t_list *fin_list)
+void	create_list(char **str, t_list **fin_list)
 {
 	int temp;
 
@@ -61,5 +97,9 @@ void	create_list(char **str, t_list *fin_list)
 	{
 		temp = ft_atoi(*str);
 		lstadd(fin_list, temp);
+		str++;
 	}
+	if (if_duplicate(fin_list) == true)
+		exit(1);
 }
+
