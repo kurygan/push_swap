@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 05:06:37 by mkettab           #+#    #+#             */
-/*   Updated: 2025/01/27 22:16:43 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/01/31 23:52:24 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_atoi(char *str)
 {
-	int nbr;
+	long nbr;
 	int index;
 	int sign;
 	
@@ -34,40 +34,22 @@ int	ft_atoi(char *str)
 	}
 	if (*str)
 		exit(1);
+	if (nbr > INT_MAX || nbr < INT_MIN)
+		exit(1);
 	return (nbr * sign);
 }
 
-t_list *lstgetlast(t_list *list)
+void	freestr(char **str)
 {
-	t_list *last;
-
-	last = list;
-	while(last && last->next)
-		last = last->next;
-	return (last);
-}
-
-void	lstadd(t_list **list, int temp)
-{
-	t_list *last;
-	t_list *new;
-
-	new = malloc(sizeof(t_list));
-	if(!new)
-		return ;
-	new->i = temp;
-	new->next = NULL;
-	new->prev = NULL;
-	if (!(*list))
-		*list = new;
-	else
+	while(*str)
 	{
-		last = lstgetlast(*list);
-		last->next = new;
-		new->prev = last;
-		(*list)->prev = new;
+		free(*str);
+		*str = NULL;
+		str++;
 	}
+	free(str);
 }
+
 bool if_duplicate(t_list **list)
 {
 	t_list *current;
@@ -102,4 +84,3 @@ void	create_list(char **str, t_list **fin_list)
 	if (if_duplicate(fin_list) == true)
 		exit(1);
 }
-
