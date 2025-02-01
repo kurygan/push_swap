@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 23:45:48 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/01 01:31:41 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/01 03:12:20 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,14 @@ void	lstadd(t_list **list, int temp)
 	}
 }
 
-void	lstclear(t_list *list)
+void	lstclear(t_list **list)
 {
-	t_list *current;
 	t_list *next;
 
-	current = list;
-	while(current)
+	while(*list)
 	{
-		next = current->next;
-		free(current);
-		current = next;
+		next = (*list)->next;
+		free(*list);
+		*list = next;
 	}
 }
