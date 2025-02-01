@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 05:00:23 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/01 03:09:11 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/01 03:44:45 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,12 @@ char	**ft_split(char const *s);
 char	*ft_strdup(const char *s1);
 size_t	ft_strlen(const char *str);
 char	*ft_strncpy(char *dest, char *src, int len);
-void	create_list(char **str, t_list **i);
-void	lstadd(t_list **list, int temp);
+bool	create_list(char **str, t_list **i);
+bool	lstadd(t_list **list, int temp);
 bool if_duplicate(t_list **list);
 void	lstclear(t_list **list);
 void	freestr(char **str);
+void	is_error(bool error);
+void	ft_putstr_fd(char *str, int fd);
 
 #endif

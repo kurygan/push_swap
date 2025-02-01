@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 18:26:01 by mkettab           #+#    #+#             */
-/*   Updated: 2025/01/15 06:27:37 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/01 03:54:41 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	while (i < start && non_const_s[i])
 		i++;
-	ft_strncpy(subbed, &non_const_s[i], len + 1);
+	ft_strncpy(subbed, &non_const_s[i], len);
 	return (subbed);
 }
 
@@ -76,7 +76,7 @@ static char	**ft_free_all(char **splitted, int j)
 
 char	**ft_split(char const *s)
 {
-	char	**splitted;
+	char	**splitted = NULL;
 	int		i;
 	int		start;
 	int		j;

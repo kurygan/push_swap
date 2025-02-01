@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 05:06:37 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/01 00:48:49 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/01 04:03:24 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,19 @@ int	ft_atoi(char *str)
 		str++;
 	}
 	if (*str)
-		exit(1);
+		return (is_error(true), 0);
 	if (nbr > INT_MAX || nbr < INT_MIN)
-		exit(1);
+		return (is_error(true), 0);
 	return (nbr * sign);
 }
 
 void	freestr(char **str)
 {
-	while(*str)
+	char **temp = str;
+	while(*temp)
 	{
-		free(*str);
-		str++;
+		free(*temp);
+		temp++;
 	}
 	free(str);
 	str = NULL;
@@ -70,7 +71,7 @@ bool if_duplicate(t_list **list)
 	return (false);
 }
 
-void	create_list(char **str, t_list **fin_list)
+bool	create_list(char **str, t_list **fin_list)
 {
 	int temp;
 
@@ -82,5 +83,6 @@ void	create_list(char **str, t_list **fin_list)
 		str++;
 	}
 	if (if_duplicate(fin_list) == true)
-		exit(1);
+		return (true);
+	return (false);
 }

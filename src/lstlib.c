@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 23:45:48 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/01 03:12:20 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/01 04:03:46 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ t_list *lstgetlast(t_list **list)
 	return (last);
 }
 
-void	lstadd(t_list **list, int temp)
+bool	lstadd(t_list **list, int temp)
 {
 	t_list *last;
 	t_list *new;
 
 	new = malloc(sizeof(t_list));
 	if(!new)
-		return ;
+		return (true);
 	new->i = temp;
 	new->next = NULL;
 	new->prev = NULL;
@@ -42,6 +42,7 @@ void	lstadd(t_list **list, int temp)
 		new->prev = last;
 		(*list)->prev = new;
 	}
+	return (false);
 }
 
 void	lstclear(t_list **list)
@@ -54,4 +55,5 @@ void	lstclear(t_list **list)
 		free(*list);
 		*list = next;
 	}
+	*list = NULL;
 }

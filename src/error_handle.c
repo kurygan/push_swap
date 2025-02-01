@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error_handle.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 05:00:08 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/01 04:08:48 by mkettab          ###   ########.fr       */
+/*   Created: 2025/02/01 03:34:04 by mkettab           #+#    #+#             */
+/*   Updated: 2025/02/01 03:48:47 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int main(int argc, char **argv)
+void	ft_putstr_fd(char *str, int fd)
 {
-	t_list *int_list = NULL;
-	char **arg_list = NULL;
-	
-	if (argc == 1)
-		return(write(2, "please put an argument\n", 23), 1);
-	else if (argc == 2 && argv[1][0])
-		arg_list = ft_split(argv[1]);
-	else if (argc > 2)
-	{
-		argv++;
-		arg_list = argv;
-	}
-	else
-		return (1);
-	is_error(create_list(arg_list, &int_list));
-	
-	if (argc == 2 && argv[1][0])
-		freestr(arg_list);
-	lstclear(&int_list);
+	while (*str)
+		write(fd, str++, 1);
+}
 
-	return (EXIT_SUCCESS);
+void	is_error(bool error)
+{
+	if (error)
+	{
+		ft_putstr_fd("Error! Try Again!\n", 2);
+		exit(1);
+	}
 }

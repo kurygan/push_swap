@@ -5,7 +5,8 @@ SRCS = create_list.c \
 			 ft_split.c \
 			 main.c \
 			 ft_strdup.c \
-			 lstlib.c
+			 lstlib.c \
+			 error_handle.c
 
 OBJS = $(SRCS:.c=.o)
 SRCS_DIR = src/
