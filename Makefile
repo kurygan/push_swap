@@ -3,8 +3,9 @@ FLAGS = -Wall -Wextra -Werror
 
 SRCS = create_list.c \
 			 ft_split.c \
-			 push_swap.c \
-			 ft_strdup.c
+			 main.c \
+			 ft_strdup.c \
+			 lstlib.c
 
 OBJS = $(SRCS:.c=.o)
 SRCS_DIR = src/
@@ -16,10 +17,10 @@ NAME = push_swap
 
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.c
 	@mkdir -p $(OBJS_DIR)
-	@cc $(FLAGS) -c $< -o $@
+	@cc $(FLAGS) -g -c $< -o $@
 
 $(NAME): $(OBJS_PREF) signature
-	@cc $(FLAGS) $(OBJS_PREF) -o $(NAME)
+	@cc $(FLAGS) $(OBJS_PREF) -g -o $(NAME)
 	@echo "Program Compiled"
 
 all: $(NAME)

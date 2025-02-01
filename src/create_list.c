@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 05:06:37 by mkettab           #+#    #+#             */
-/*   Updated: 2025/01/31 23:52:24 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/01 00:48:49 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ void	freestr(char **str)
 	while(*str)
 	{
 		free(*str);
-		*str = NULL;
 		str++;
 	}
 	free(str);
+	str = NULL;
 }
 
 bool if_duplicate(t_list **list)

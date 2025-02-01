@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 05:00:08 by mkettab           #+#    #+#             */
-/*   Updated: 2025/01/31 23:52:49 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/01 01:31:47 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ int main(int argc, char **argv)
 		printf("%d\n", int_list->i);
 		int_list = int_list->next;
 	}
-	lstclear(&int_list);
-	freestr(arg_list);
+	lstclear(int_list);
 
 	return (EXIT_SUCCESS);
 }
