@@ -6,29 +6,29 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 23:45:48 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/01 04:03:46 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/01 04:22:40 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_list *lstgetlast(t_list **list)
+t_list	*lstgetlast(t_list **list)
 {
-	t_list *last;
+	t_list	*last;
 
 	last = *list;
-	while(last && last->next)
+	while (last && last->next)
 		last = last->next;
 	return (last);
 }
 
 bool	lstadd(t_list **list, int temp)
 {
-	t_list *last;
-	t_list *new;
+	t_list	*last;
+	t_list	*new;
 
 	new = malloc(sizeof(t_list));
-	if(!new)
+	if (!new)
 		return (true);
 	new->i = temp;
 	new->next = NULL;
@@ -47,9 +47,9 @@ bool	lstadd(t_list **list, int temp)
 
 void	lstclear(t_list **list)
 {
-	t_list *next;
+	t_list	*next;
 
-	while(*list)
+	while (*list)
 	{
 		next = (*list)->next;
 		free(*list);

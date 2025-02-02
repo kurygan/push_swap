@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 18:26:01 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/01 03:54:41 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/01 04:21:30 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 size_t	ft_strlen(const char *str)
 {
 	size_t	len;
-	
+
 	len = 0;
 	while (str[len])
 		len++;
@@ -76,7 +76,7 @@ static char	**ft_free_all(char **splitted, int j)
 
 char	**ft_split(char const *s)
 {
-	char	**splitted = NULL;
+	char	**splitted;
 	int		i;
 	int		start;
 	int		j;

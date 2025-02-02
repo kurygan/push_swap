@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 04:16:24 by mkettab           #+#    #+#             */
-/*   Updated: 2025/01/15 06:27:25 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/01 04:32:09 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ char	*ft_strncpy(char *dest, char *src, int len)
 	int	i;
 
 	i = 0;
-	while(src[i] && i < len)
+	while (src[i] && i < len)
 	{
 		dest[i] = src[i];
 		i++;
 	}
-	return dest;
+	return (dest);
 }

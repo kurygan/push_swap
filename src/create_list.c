@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 05:06:37 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/01 04:03:24 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/02 16:24:00 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 int	ft_atoi(char *str)
 {
-	long nbr;
-	int index;
-	int sign;
-	
+	long	nbr;
+	int		index;
+	int		sign;
+
 	nbr = 0;
 	sign = 1;
 	if (*str == '+' || *str == '-')
 	{
-		if(*str == '-')
+		if (*str == '-')
 			sign = -sign;
 		str++;
 	}
@@ -41,21 +41,20 @@ int	ft_atoi(char *str)
 
 void	freestr(char **str)
 {
-	char **temp = str;
-	while(*temp)
+	while (*str)
 	{
-		free(*temp);
-		temp++;
+		free(*str);
+		str++;
 	}
 	free(str);
 	str = NULL;
 }
 
-bool if_duplicate(t_list **list)
+bool	if_duplicate(t_list **list)
 {
-	t_list *current;
-	t_list *verif;
-	
+	t_list	*current;
+	t_list	*verif;
+
 	current = *list;
 	while (current)
 	{
@@ -73,10 +72,10 @@ bool if_duplicate(t_list **list)
 
 bool	create_list(char **str, t_list **fin_list)
 {
-	int temp;
+	int	temp;
 
 	temp = 0;
-	while(*str)
+	while (*str)
 	{
 		temp = ft_atoi(*str);
 		lstadd(fin_list, temp);
