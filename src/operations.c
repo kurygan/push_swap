@@ -60,32 +60,27 @@ void	rotate_both(t_list **a, t_list **b, int *total, bool reverse)
 	(*total)++;
 }
 
-void	push(t_list **sender, t_list**reciever, int *total)
+void	push(t_list **sender, t_list **receiver, int *total)
 {
 	t_list *sent;
-	t_list *last_send;
-	t_list *last_recieve;
 
 	if (!(*sender))
 		return ;
 	sent = *sender;
-	last_send = lstgetlast(sender);
 	*sender = (*sender)->next;
-	(*sender)->prev = last_send;
-	last_send->next = *sender;
-	if (!(*reciever))
+	if (*sender)
+		(*sender)->prev = NULL;
+	if (!(*receiver))
 	{
-		*reciever = sent;
-		(*reciever)->next = NULL;
-		(*reciever)->prev = NULL;
+		*receiver = sent;
+		(*receiver)->next = NULL;
+		(*receiver)->prev = NULL;
 	}
 	else
 	{
-		last_recieve = lstgetlast(reciever);
-		last_recieve->next = sent;
-		sent->prev = last_recieve;
-		sent->next = (*reciever);
-		*reciever = sent;
+		sent->next = *receiver;
+		(*receiver)->prev = sent;
+		*receiver = sent;
 	}
 	(*total)++;
 }
