@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 05:00:08 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/02 16:16:43 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/03 23:23:38 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_list	*a;
 	// t_list	*b;
-	t_list	*temp;
+	t_list	*temp = NULL;
 	char	**arg_list;
 
 	a = NULL;
@@ -30,11 +30,12 @@ int	main(int argc, char **argv)
 		arg_list = ++argv;
 	is_error(create_list(arg_list, &a));
 	temp = a;
-	while(temp)
+	while(temp->next != a)
 	{
 		printf("%d\n", temp->i);
 		temp = temp->next;
 	}
+	printf("%d\n", temp->i);
 	
 	if (argc == 2 && argv[1][0])
 		freestr(arg_list);

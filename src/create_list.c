@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 05:06:37 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/02 16:24:00 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/04 02:05:27 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,31 @@ int	ft_atoi(char *str)
 		if (*str == '-')
 			sign = -sign;
 		str++;
+		if(!(*str))
+			return (is_error(true), 0);
 	}
 	while (*str >= '0' && *str <= '9')
 	{
 		index = (*str) - '0';
 		nbr = (nbr * 10) + index;
+		if (nbr > INT_MAX || nbr < INT_MIN)
+			return (is_error(true), 0);
 		str++;
 	}
 	if (*str)
-		return (is_error(true), 0);
-	if (nbr > INT_MAX || nbr < INT_MIN)
 		return (is_error(true), 0);
 	return (nbr * sign);
 }
 
 void	freestr(char **str)
 {
-	while (*str)
+	char **temp;
+
+	temp = str;
+	while (*temp)
 	{
-		free(*str);
-		str++;
+		free(*temp);
+		temp++;
 	}
 	free(str);
 	str = NULL;
@@ -56,10 +61,10 @@ bool	if_duplicate(t_list **list)
 	t_list	*verif;
 
 	current = *list;
-	while (current)
+	while (current->next != *list)
 	{
 		verif = current->next;
-		while (verif)
+		while (verif != current)
 		{
 			if (verif->i == current->i)
 				return (true);
@@ -81,7 +86,9 @@ bool	create_list(char **str, t_list **fin_list)
 		lstadd(fin_list, temp);
 		str++;
 	}
-	if (if_duplicate(fin_list) == true)
+	if(!fin_list || !*fin_list)
+		return (true);
+	if (if_duplicate(fin_list))
 		return (true);
 	return (false);
 }

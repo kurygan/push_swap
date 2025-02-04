@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 23:45:48 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/01 04:22:40 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/03 23:27:19 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ t_list	*lstgetlast(t_list **list)
 	t_list	*last;
 
 	last = *list;
-	while (last && last->next)
+	if(!last->next)
+		return (*list);
+	last = (*list)->next;
+	while(last->next != *list)
 		last = last->next;
 	return (last);
 }
@@ -40,6 +43,7 @@ bool	lstadd(t_list **list, int temp)
 		last = lstgetlast(list);
 		last->next = new;
 		new->prev = last;
+		new->next = *list;
 		(*list)->prev = new;
 	}
 	return (false);
@@ -48,12 +52,15 @@ bool	lstadd(t_list **list, int temp)
 void	lstclear(t_list **list)
 {
 	t_list	*next;
+	t_list	*current;
 
-	while (*list)
+	current = *list;
+	while (current->next != *list)
 	{
-		next = (*list)->next;
-		free(*list);
-		*list = next;
+		next = (current)->next;
+		free(current);
+		current = next;
 	}
+	free(current);
 	*list = NULL;
 }

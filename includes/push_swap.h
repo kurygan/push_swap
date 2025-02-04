@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 05:00:23 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/01 04:20:41 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/03 14:49:50 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ void	lstclear(t_list **list);
 void	freestr(char **str);
 void	is_error(bool error);
 void	ft_putstr_fd(char *str, int fd);
+t_list	*lstgetlast(t_list **list);
 
 #endif
