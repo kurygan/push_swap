@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 05:00:23 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/06 06:00:10 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/06 06:14:09 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@ void	push(t_list **sender, t_list**reciever, int *total);
 void	pushed(t_list **receive, t_list *sent);
 void	swap_both(t_list *a, t_list *b, int *total);
 void	rotate_both(t_list **a, t_list **b, bool reverse, int *total);
+
+// sorting
+void	sort(t_list **a, t_list **b, int *total);
 
 // miscellaneous
 void	is_error(bool error);

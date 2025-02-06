@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 05:39:15 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/06 05:59:39 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/06 06:23:03 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,30 @@ void	do_op(t_op operations, t_list **a, t_list **b, int *total)
 		return (rotate_list(b, true, total), ft_putstr_fd("rb\n", 1));
 	else if (operations == rrr)
 		return (rotate_both(a, b, true, total), ft_putstr_fd("rr\n", 1));
+}
+
+void	sort(t_list **a, t_list **b, int *total)
+{
+	do_op(pb, a, b, total);
+	do_op(pb, a, b, total);
+	rev_sort_b(a, b, total);
+}
+
+void	rev_sort_b(t_list **a, t_list **b, int *total)
+{
+	t_list *last_a;
+	t_list *temp_a;
+
+	last_a = (*a)->prev;
+	temp_a = *a;
+	while(temp_a && temp_a != last_a)
+	{
+		get_target(a, b, true);
+		get_median();
+	}
+}
+
+void	get_target(t_list **a, t_list **b, bool smallest)
+{
+	
 }
