@@ -7,7 +7,8 @@ SRCS = create_list.c \
 			 ft_strdup.c \
 			 lstlib.c \
 			 error_handle.c \
-			 operations.c
+			 swap_rotate.c \
+			 push.c
 
 OBJS = $(SRCS:.c=.o)
 SRCS_DIR = src/

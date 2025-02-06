@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 05:00:23 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/04 05:54:09 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/06 03:50:06 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 typedef struct s_list
 {
 	int				i;
+	int				cost;
+	bool			lower;
+	struct s_list	*target;
 	struct s_list	*prev;
 	struct s_list	*next;
 }	t_list;
@@ -42,10 +45,11 @@ t_list	*lstgetlast(t_list **list);
 
 // operations
 void	swap_list(t_list *list, int *total);
-void	rotate_list(t_list **list, int *total, bool reverse);
+void	rotate_list(t_list **list, bool reverse, int *total);
 void	push(t_list **sender, t_list**reciever, int *total);
+void	pushed(t_list **receive, t_list *sent);
 void	swap_both(t_list *a, t_list *b, int *total);
-void	rotate_both(t_list **a, t_list **b, int *total, bool reverse);
+void	rotate_both(t_list **a, t_list **b, bool reverse);
 
 // miscellaneous
 void	is_error(bool error);
