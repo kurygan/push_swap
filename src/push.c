@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 03:48:42 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/06 03:49:34 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/06 04:37:57 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	pushed(t_list **receive, t_list *sent)
 	}
 }
 
-void	push(t_list **sender, t_list **receive)
+void	push(t_list **sender, t_list **receive, int *total)
 	{
 	t_list	*sent;
 	t_list	*last_send;
@@ -49,4 +49,5 @@ void	push(t_list **sender, t_list **receive)
 		last_send->next = *sender;
 	}
 	pushed(receive, sent);
+	(*total)++;
 }
