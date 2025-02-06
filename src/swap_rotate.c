@@ -6,13 +6,13 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 02:33:46 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/06 03:49:28 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/06 04:01:09 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	swap_list(t_list *list)
+void	swap_list(t_list *list, int *total)
 {
 	int	temp;
 
