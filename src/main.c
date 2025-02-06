@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 05:00:08 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/06 04:00:24 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/06 06:00:55 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,8 @@ int	main(int argc, char **argv)
 	else if (argc > 2)
 		arg_list = ++argv;
 	is_error(create_list(arg_list, &a));
-	// push(&a, &b);
-	// push(&a, &b);
-	// push(&a, &b); 
-	// push(&b, &a);
-	// rotate_both(&a, &b, false);
-	// swap_list(a);
-	// rotate_list(&b, true);
+	do_op(pb, &a, &b, &total);
+	do_op(pb, &a, &b, &total);
 
 	printf("a list: ");
 	print_list(&a);
