@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tylerlover911 <tylerlover911@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 05:00:23 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/06 06:14:09 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/07 11:17:54 by tylerlover9      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,9 @@ void	rotate_both(t_list **a, t_list **b, bool reverse, int *total);
 
 // sorting
 void	sort(t_list **a, t_list **b, int *total);
+void	rev_sort_b(t_list **a, t_list **b, int *total);
+void	get_smallest_target(t_list **a, t_list **b);
+t_list	*get_biggest(t_list **list);
 
 // miscellaneous
 void	is_error(bool error);

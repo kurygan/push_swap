@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tylerlover911 <tylerlover911@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 05:39:15 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/06 06:23:03 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/07 11:32:48 by tylerlover9      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,65 @@ void	sort(t_list **a, t_list **b, int *total)
 {
 	do_op(pb, a, b, total);
 	do_op(pb, a, b, total);
+	do_op(pb, a, b, total);
+	do_op(pb, a, b, total);
+	do_op(pb, a, b, total);
 	rev_sort_b(a, b, total);
 }
 
 void	rev_sort_b(t_list **a, t_list **b, int *total)
 {
-	t_list *last_a;
-	t_list *temp_a;
+	//t_list *last_a;
+	//t_list *temp_a;
 
-	last_a = (*a)->prev;
+	//last_a = (*a)->prev;
+	//temp_a = *a;
+	get_smallest_target(a, b);
+	(*total)++;
+}
+
+void	get_smallest_target(t_list **a, t_list **b)
+{
+	t_list *temp_a;
+	t_list *temp_b;
+	t_list *node;
+
 	temp_a = *a;
-	while(temp_a && temp_a != last_a)
+	while ((*a)->prev != temp_a)
 	{
-		get_target(a, b, true);
-		get_median();
+		node = NULL;
+		temp_b = *b;
+		if (temp_b->i < temp_a->i)
+			node = temp_b;
+		while (temp_b->next != *b)
+		{
+			if (temp_b->i < temp_a->i && (!node || temp_b->i > node->i))
+				node = temp_b;
+			temp_b = temp_b->next;
+		}
+		if (temp_b->i < temp_a->i && (!node || temp_b->i > node->i))
+			node = temp_b;
+		if (!node)
+			node = get_biggest(b);
+		temp_a->target = node;
+ 		temp_a = temp_a->next;
 	}
 }
 
-void	get_target(t_list **a, t_list **b, bool smallest)
+t_list	*get_biggest(t_list **list)
 {
-	
+	t_list *biggest;
+	t_list *current;
+
+	current = *list;
+	biggest = current;
+	while(current->next != *list)
+	{
+		if(current->i > biggest->i)
+			biggest = current;
+		current = current->next;
+	}
+	if(current->i > biggest->i)
+		biggest = current;
+	return (biggest);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tylerlover911 <tylerlover911@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 05:00:08 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/06 06:00:55 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/07 11:15:04 by tylerlover9      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ int	main(int argc, char **argv)
 	else if (argc > 2)
 		arg_list = ++argv;
 	is_error(create_list(arg_list, &a));
-	do_op(pb, &a, &b, &total);
-	do_op(pb, &a, &b, &total);
+	sort(&a, &b, &total);
 
 	printf("a list: ");
 	print_list(&a);
