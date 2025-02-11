@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lstlib.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tylerlover911 <tylerlover911@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 23:45:48 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/06 03:37:27 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/10 15:16:33 by tylerlover9      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ bool	lstadd(t_list **list, int temp)
 		return (true);
 	new->i = temp;
 	new->next = NULL;
+	new->lower = false;
 	new->prev = NULL;
 	new->target = NULL;
 	if (!(*list))
@@ -76,7 +77,7 @@ int	lstsize(t_list **list)
 
 	current = *list;
 	len = 0;
-	while (current->next != *list)
+	while (current && current->next != *list)
 	{
 		len++;
 		current = current->next;

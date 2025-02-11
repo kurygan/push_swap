@@ -6,7 +6,7 @@
 /*   By: tylerlover911 <tylerlover911@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 05:39:15 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/07 11:32:48 by tylerlover9      ###   ########.fr       */
+/*   Updated: 2025/02/11 05:22:51 by tylerlover9      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ void	sort(t_list **a, t_list **b, int *total)
 {
 	do_op(pb, a, b, total);
 	do_op(pb, a, b, total);
-	do_op(pb, a, b, total);
-	do_op(pb, a, b, total);
-	do_op(pb, a, b, total);
+	//do_op(pb, a, b, total);
+	//do_op(pb, a, b, total);
+	//do_op(pb, a, b, total);
 	rev_sort_b(a, b, total);
 }
 
@@ -56,6 +56,8 @@ void	rev_sort_b(t_list **a, t_list **b, int *total)
 	//last_a = (*a)->prev;
 	//temp_a = *a;
 	get_smallest_target(a, b);
+	get_median(a, b);
+	get_cost(a, b);
 	(*total)++;
 }
 

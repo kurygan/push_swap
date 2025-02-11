@@ -6,7 +6,7 @@
 /*   By: tylerlover911 <tylerlover911@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 05:00:23 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/07 11:17:54 by tylerlover9      ###   ########.fr       */
+/*   Updated: 2025/02/11 05:30:32 by tylerlover9      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	freestr(char **str);
 bool	create_list(char **str, t_list **i);
 bool	lstadd(t_list **list, int temp);
 void	lstclear(t_list **list);
+int		lstsize(t_list **list);
 t_list	*lstgetlast(t_list **list);
 
 // operations
@@ -71,6 +72,9 @@ void	sort(t_list **a, t_list **b, int *total);
 void	rev_sort_b(t_list **a, t_list **b, int *total);
 void	get_smallest_target(t_list **a, t_list **b);
 t_list	*get_biggest(t_list **list);
+void	get_cost(t_list **costed);
+void	get_median(t_list **a, t_list **b);
+void	set_median(t_list *temp, int len);
 
 // miscellaneous
 void	is_error(bool error);
