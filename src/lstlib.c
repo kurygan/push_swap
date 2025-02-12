@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lstlib.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tylerlover911 <tylerlover911@student.42    +#+  +:+       +#+        */
+/*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 23:45:48 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/10 15:16:33 by tylerlover9      ###   ########.fr       */
+/*   Updated: 2025/02/12 01:31:10 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,7 @@ t_list	*lstgetlast(t_list **list)
 	if (!(*list))
 		return (NULL);
 	last = *list;
-	if (!last->next)
-		return (*list);
-	if (*list && (*list)->next)
-		last = (*list)->next;
-	while (last && last->next != *list)
+	while (last->next && last->next != *list)
 		last = last->next;
 	return (last);
 }
@@ -77,11 +73,29 @@ int	lstsize(t_list **list)
 
 	current = *list;
 	len = 0;
-	while (current && current->next != *list)
+	while (current)
 	{
 		len++;
+		if (current->next == *list)
+			break ;
 		current = current->next;
 	}
-	len++;
 	return (len);
+}
+
+int	lstgetindex(t_list *target_node, t_list **list)
+{
+	int		index;
+	t_list	*temp;
+
+	temp = *list;
+	index = 0;
+	while (temp)
+	{
+		index++;
+		if (temp == target_node)
+			break ;
+		temp = temp->next;
+	}
+	return (index);
 }

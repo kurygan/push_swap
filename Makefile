@@ -38,6 +38,8 @@ fclean: clean signature
 
 re: fclean all signature
 
+.PHONY: all clean fclean re
+
 signature:
 	@echo ""
 	@echo ""

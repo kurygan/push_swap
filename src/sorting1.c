@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tylerlover911 <tylerlover911@student.42    +#+  +:+       +#+        */
+/*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 05:39:15 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/11 05:22:51 by tylerlover9      ###   ########.fr       */
+/*   Updated: 2025/02/12 03:07:18 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,14 @@ void	sort(t_list **a, t_list **b, int *total)
 
 void	rev_sort_b(t_list **a, t_list **b, int *total)
 {
-	//t_list *last_a;
-	//t_list *temp_a;
+	t_list *temp_b;
+	t_list *temp_a;
 
-	//last_a = (*a)->prev;
-	//temp_a = *a;
+	temp_b = *b;
+	temp_a = *a;
 	get_smallest_target(a, b);
 	get_median(a, b);
-	get_cost(a, b);
+	get_cost(&temp_a, &temp_b);
 	(*total)++;
 }
 
@@ -85,24 +85,24 @@ void	get_smallest_target(t_list **a, t_list **b)
 		if (!node)
 			node = get_biggest(b);
 		temp_a->target = node;
- 		temp_a = temp_a->next;
+		temp_a = temp_a->next;
 	}
 }
 
 t_list	*get_biggest(t_list **list)
 {
-	t_list *biggest;
-	t_list *current;
+	t_list	*biggest;
+	t_list	*current;
 
 	current = *list;
 	biggest = current;
-	while(current->next != *list)
+	while (current->next != *list)
 	{
-		if(current->i > biggest->i)
+		if (current->i > biggest->i)
 			biggest = current;
 		current = current->next;
 	}
-	if(current->i > biggest->i)
+	if (current->i > biggest->i)
 		biggest = current;
 	return (biggest);
 }

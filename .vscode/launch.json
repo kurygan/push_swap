@@ -6,12 +6,12 @@
           "type": "cppdbg",
           "request": "launch",
           "program": "${workspaceFolder}/push_swap",
-          "args": ["3 7 5 9 4 10 6 2 8 1"],
+          "args": ["14", "15", "16"],
           "stopAtEntry": false,
           "cwd": "${workspaceFolder}",
           "environment": [],
           "externalConsole": false,
-          "MIMode": "lldb",
+          "MIMode": "gdb",
           "setupCommands": [
               {
                   "description": "Activer l'impression des chaînes de caractères",
