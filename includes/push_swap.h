@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 05:00:23 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/12 02:10:26 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/13 19:21:22 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,16 @@ typedef enum s_op
 	rrr
 }	t_op;
 
+typedef struct s_rotate_calc
+{
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+}	t_rotate_calc;
+
 // str tweaks
 char	**ft_split(char const *s);
 char	*ft_strdup(const char *s1);
@@ -76,6 +86,13 @@ t_list	*get_biggest(t_list **list);
 void	get_cost(t_list **costed, t_list **target);
 void	get_median(t_list **a, t_list **b);
 void	set_median(t_list *temp, int len);
+
+// calculate cost
+int		calculate_op(t_list **a, t_list **b, t_list *top_a, t_list *top_b);
+void	calculate_ra(t_list **a, t_list *top_a, t_rotate_calc *ops);
+void	calculate_rb(t_list **b, t_list *top_b, t_rotate_calc *ops);
+void	calculate_rr(t_rotate_calc *ops);
+void	calculate_rrr(t_rotate_calc *ops);
 
 // miscellaneous
 void	is_error(bool error);

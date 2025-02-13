@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 05:39:15 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/12 03:07:18 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/13 19:44:02 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,13 @@ void	sort(t_list **a, t_list **b, int *total)
 {
 	do_op(pb, a, b, total);
 	do_op(pb, a, b, total);
-	//do_op(pb, a, b, total);
-	//do_op(pb, a, b, total);
-	//do_op(pb, a, b, total);
 	rev_sort_b(a, b, total);
 }
 
 void	rev_sort_b(t_list **a, t_list **b, int *total)
 {
-	t_list *temp_b;
-	t_list *temp_a;
+	t_list	*temp_b;
+	t_list	*temp_a;
 
 	temp_b = *b;
 	temp_a = *a;
@@ -63,28 +60,30 @@ void	rev_sort_b(t_list **a, t_list **b, int *total)
 
 void	get_smallest_target(t_list **a, t_list **b)
 {
-	t_list *temp_a;
-	t_list *temp_b;
-	t_list *node;
+	t_list	*temp_a;
+	t_list	*temp_b;
+	t_list	*node;
 
 	temp_a = *a;
-	while ((*a)->prev != temp_a)
+	while (1)
 	{
 		node = NULL;
 		temp_b = *b;
 		if (temp_b->i < temp_a->i)
 			node = temp_b;
-		while (temp_b->next != *b)
+		while (1)
 		{
 			if (temp_b->i < temp_a->i && (!node || temp_b->i > node->i))
 				node = temp_b;
+			if(temp_b->next == *b)
+				break ;
 			temp_b = temp_b->next;
 		}
-		if (temp_b->i < temp_a->i && (!node || temp_b->i > node->i))
-			node = temp_b;
 		if (!node)
 			node = get_biggest(b);
 		temp_a->target = node;
+		if (temp_a->next == *a)
+			break ;
 		temp_a = temp_a->next;
 	}
 }
@@ -96,13 +95,13 @@ t_list	*get_biggest(t_list **list)
 
 	current = *list;
 	biggest = current;
-	while (current->next != *list)
+	while (current)
 	{
 		if (current->i > biggest->i)
 			biggest = current;
+		if (current->next == *list)
+			break ;
 		current = current->next;
 	}
-	if (current->i > biggest->i)
-		biggest = current;
 	return (biggest);
 }

@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 02:33:46 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/06 04:37:27 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/13 19:24:12 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	swap_list(t_list *list, int *total)
 
 void	swap_both(t_list *a, t_list *b, int *total)
 {
-	int dummy;
+	int	dummy;
 
 	dummy = 0;
 	swap_list(a, &dummy);
@@ -47,8 +47,8 @@ void	rotate_list(t_list **list, bool reverse, int *total)
 
 void	rotate_both(t_list **a, t_list **b, bool reverse, int *total)
 {
-	int dummy;
-	
+	int	dummy;
+
 	dummy = 0;
 	rotate_list(a, reverse, &dummy);
 	rotate_list(b, reverse, &dummy);

@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:34:28 by tylerlover9       #+#    #+#             */
-/*   Updated: 2025/02/12 03:26:19 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/13 19:33:16 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,46 +16,17 @@ void	get_cost(t_list **costed, t_list **target)
 {
 	t_list	*temp_costed;
 	t_list	*temp_target;
-	int		cost;
-	int		index_a;
-	int		index_b;
 
 	temp_costed = *costed;
 	temp_target = temp_costed->target;
-	index_a = lstgetindex(temp_costed, costed);
-	index_b = lstgetindex(temp_target, target);
 	while (1)
 	{
-		while (index_a)
-		{
-			if (temp_costed->lower == false && temp_target->lower == false)
-				{
-					do_op(rr, costed, target, &cost);
-					cost++;
-				}
-    else if (temp_costed->lower == true && temp_target->lower == true)
-    {
-        do_op(rrr, costed, target, &cost);
-        cost++;
-    }
-    else
-    {
-        if (temp_costed->lower == false)
-            do_op(ra, costed, target, &cost);
-        else
-            do_op(rra, costed, target, &cost);
-        if (temp_target->lower == false)
-            do_op(rb, costed, target, &cost);
-        else
-            do_op(rrb, costed, target, &cost);
-        cost += 2;
-    }
-    index_a--;
-    index_b--;
-		}
+		temp_costed->cost = calculate_op(costed, target,
+				temp_costed, temp_target);
 		if (temp_costed->next == *costed)
 			break ;
 		temp_costed = temp_costed->next;
+		temp_target = temp_costed->target;
 	}
 }
 
@@ -91,4 +62,17 @@ void	set_median(t_list *temp, int len)
 		index++;
 		temp = temp->next;
 	}
+}
+
+int	calculate_op(t_list **a, t_list **b, t_list *top_a, t_list *top_b)
+{
+	t_rotate_calc	ops;
+
+	(void)0, ops.ra = 0, ops.rb = 0, ops.rr = 0;
+	(void)0, ops.rra = 0, ops.rrb = 0, ops.rrr = 0;
+	calculate_ra(a, top_a, &ops);
+	calculate_rb(b, top_b, &ops);
+	calculate_rr(&ops);
+	calculate_rrr(&ops);
+	return (ops.ra + ops.rb + ops.rr + ops.rra + ops.rrb + ops.rrr);
 }
