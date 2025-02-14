@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 05:00:23 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/13 23:32:26 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/14 15:06:19 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,17 @@ void	rotate_both(t_list **a, t_list **b, bool reverse, int *total);
 // sorting
 void	sort(t_list **a, t_list **b, int *total);
 void	rev_sort_b(t_list **a, t_list **b, int *total);
+void	rev_sort_a(t_list **a, t_list **b, int *total);
 void	get_smallest_target(t_list **a, t_list **b);
+void	get_biggest_target(t_list **a, t_list **b);
 t_list	*get_biggest(t_list **list);
+t_list *get_smallest(t_list **list);
 void	get_cost(t_list **costed, t_list **target);
 void	get_median(t_list **a, t_list **b);
 void	set_median(t_list *temp, int len);
 t_list	*get_smallest_cost(t_list **a);
+void	sort_short (t_list **a, t_list **b, int *total);
+void	loop_sort_a(t_list **a, t_list **b, int *total);
 
 // calculate cost
 int		calculate_op(t_list **a, t_list **b, t_list *top_a, t_list *top_b);
@@ -98,6 +103,7 @@ void	calculate_rrr(t_rotate_calc *ops);
 // miscellaneous
 void	is_error(bool error);
 void	ft_putstr_fd(char *str, int fd);
+void	free_all(int argc, char **argv, char **arg_list, t_list **a);
 bool	if_duplicate(t_list **list);
 
 #endif

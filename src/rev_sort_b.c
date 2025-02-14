@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 02:17:08 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/14 02:19:17 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/14 14:58:51 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,41 @@
 
 void	rev_sort_b(t_list **a, t_list **b, int *total)
 {
-	t_list *smallest_cost;
-	t_list *smallest_target; 
 	while (lstsize(a) > 3)
 	{
 		get_smallest_target(a, b);
 		get_median(a, b);
 		get_cost(a, b);
-		smallest_cost = get_smallest_cost(a);
-		smallest_target = smallest_cost->target;
-		while (lstgetindex(smallest_cost, a))
-		{
-			if (smallest_cost->lower == true)
-				do_op(rra, a, b, total);
-			else
-				do_op(ra, a, b, total);
-		}
-		while (lstgetindex(smallest_target, b))
-		{
-			if (smallest_target->lower)
-				do_op(rrb, a, b, total);
-			else
-				do_op(rb, a, b, total);
-		}
 		do_op(pb, a, b, total);
+	}
+}
+
+void	loop_sort_b(t_list **a, t_list **b, int *total)
+{
+	t_list	*smallest_cost;
+	t_list	*smallest_target;
+
+	smallest_cost = get_smallest_cost(a);
+	smallest_target = smallest_cost->target;
+	if (smallest_cost->lower == true && smallest_target->lower == true)
+		while (lstgetindex(smallest_cost, a) && lstgetindex(smallest_target, b))
+			do_op(rrr, a, b, total);
+	if (smallest_cost->lower == false && smallest_target->lower == false)
+		while (lstgetindex(smallest_cost, a) && lstgetindex(smallest_target, b))
+			do_op(rr, a, b, total);
+	while (lstgetindex(smallest_cost, a))
+	{
+		if (smallest_cost->lower == true)
+			do_op(rra, a, b, total);
+		else
+			do_op(ra, a, b, total);
+	}
+	while (lstgetindex(smallest_target, b))
+	{
+		if (smallest_target->lower)
+			do_op(rrb, a, b, total);
+		else
+			do_op(rb, a, b, total);
 	}
 }
 
@@ -52,13 +63,11 @@ void	get_smallest_target(t_list **a, t_list **b)
 	{
 		node = NULL;
 		temp_b = *b;
-		if (temp_b->i < temp_a->i)
-			node = temp_b;
 		while (1)
 		{
 			if (temp_b->i < temp_a->i && (!node || temp_b->i > node->i))
 				node = temp_b;
-			if(temp_b->next == *b)
+			if (temp_b->next == *b)
 				break ;
 			temp_b = temp_b->next;
 		}

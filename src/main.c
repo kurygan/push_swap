@@ -6,29 +6,35 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 05:00:08 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/12 01:15:36 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/14 15:29:04 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	print_list(t_list **list)
+bool	verif_sorted(t_list **a)
 {
-	t_list *temp = *list;
-	while (temp && temp->next != *list)
+	t_list *temp_a;
+
+	temp_a = *a;
+	while (1)
 	{
-		printf("%d | ", temp->i);
-		temp = temp->next;
+		if (temp_a->i > temp_a->next->i && temp_a->next != *a)
+			return (false);
+		if (temp_a->next == *a)
+			break ;
+		temp_a = temp_a->next;
 	}
-	if(temp)
-		printf("%d | ", temp->i);
+	return (true);
 }
 
 int	main(int argc, char **argv)
 {
 	t_list	*a;
 	t_list	*b;
-	int total;
+	//t_list *temp_a;
+	bool	list_error;
+	int		total;
 	char	**arg_list;
 
 	a = NULL;
@@ -41,20 +47,21 @@ int	main(int argc, char **argv)
 		arg_list = ft_split(argv[1]);
 	else if (argc > 2)
 		arg_list = ++argv;
-	is_error(create_list(arg_list, &a));
+	list_error = create_list(arg_list, &a);
+	if (list_error || verif_sorted(&a))
+	{
+		free_all(argc, argv, arg_list, &a);
+		is_error(list_error);
+	}
 	sort(&a, &b, &total);
-
-	printf("a list: ");
-	print_list(&a);
-	printf("\n");
-	printf("b list: ");
-	print_list(&b);
-	printf("\n");
-	printf("Total operations: %d\n", total);
-	
-	if (argc == 2 && argv[1][0])
-		freestr(arg_list);
-	lstclear(&a);
-	lstclear(&b);
+	//temp_a = a;
+	//whvile (1)
+	//{
+	//	printf("%d | ", temp_a->i);
+	//	if (temp_a->next == a)
+	//		break ;
+	//	temp_a = temp_a->next;
+	//}
+	free_all(argc, argv, arg_list, &a);
 	return (EXIT_SUCCESS);
 }

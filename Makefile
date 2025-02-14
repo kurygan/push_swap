@@ -9,7 +9,8 @@ SRCS = create_list.c \
 			 error_handle.c \
 			 swap_rotate.c push.c \
 			 sorting1.c sorting2.c \
-			 calculate_rotations.c
+			 calculate_rotations.c \
+			 rev_sort_b.c rev_sort_a.c
 
 OBJS = $(SRCS:.c=.o)
 SRCS_DIR = src/

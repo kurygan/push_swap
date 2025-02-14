@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 05:39:15 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/14 02:23:38 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/14 14:57:56 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,30 @@ void	do_op(t_op operations, t_list **a, t_list **b, int *total)
 
 void	sort(t_list **a, t_list **b, int *total)
 {
+	if (lstsize(a) <= 3)
+	{
+		sort_short(a, b, total);
+		return ;
+	}
 	do_op(pb, a, b, total);
 	do_op(pb, a, b, total);
-	//do_op(pb, a, b, total);
-	//do_op(pb, a, b, total);
-	//do_op(pb, a, b, total);
 	rev_sort_b(a, b, total);
+	sort_short(a, b, total);
+	rev_sort_a(a, b, total);
+}
+
+void	sort_short(t_list **a, t_list **b, int *total)
+{
+	if (lstsize(a) == 2)
+		if ((*a)->i > (*a)->next->i)
+			do_op(sa, a, b, total);
+	if (lstsize(a) == 3)
+	{
+		if (get_biggest(a) == (*a)->next)
+			do_op(rra, a, b, total);
+		else if (get_biggest(a) == *a)
+			do_op(ra, a, b, total);
+		if ((*a)->i > (*a)->next->i)
+			do_op(sa, a, b, total);
+	}
 }

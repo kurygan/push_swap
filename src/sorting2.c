@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:34:28 by tylerlover9       #+#    #+#             */
-/*   Updated: 2025/02/13 23:33:03 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/14 15:32:31 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	set_median(t_list *temp, int len)
 	int	index;
 
 	index = 0;
-	while (index < len / 2)
+	while (index <= len / 2)
 	{
 		temp->lower = false;
 		index++;
@@ -86,7 +86,7 @@ t_list	*get_smallest_cost(t_list **a)
 
 	temp_a = *a;
 	lowest = NULL;
-	while(1)
+	while (1)
 	{
 		if (!lowest || (lowest->cost > temp_a->cost))
 			lowest = temp_a;
