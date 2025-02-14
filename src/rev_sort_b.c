@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 02:17:08 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/14 14:58:51 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/14 20:20:37 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	rev_sort_b(t_list **a, t_list **b, int *total)
 		get_smallest_target(a, b);
 		get_median(a, b);
 		get_cost(a, b);
+		loop_sort_b(a, b, total);
 		do_op(pb, a, b, total);
 	}
 }

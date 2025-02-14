@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 04:16:24 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/01 04:32:09 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/14 21:47:24 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_strdup(const char *s1)
 	return (strduped);
 }
 
-char	*ft_strncpy(char *dest, char *src, int len)
+char	*ft_strncpy(char *dest, const char *src, int len)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 23:45:48 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/13 20:42:39 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/14 20:44:04 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	lstclear(t_list **list)
 	t_list	*current;
 
 	current = *list;
+	if (!list || !*list)
+		return ;
 	while (current && current->next != *list)
 	{
 		next = (current)->next;

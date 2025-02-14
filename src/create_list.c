@@ -5,46 +5,46 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 05:06:37 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/04 02:30:46 by mkettab          ###   ########.fr       */
+/*   Created: 2025/02/14 21:54:08 by mkettab           #+#    #+#             */
+/*   Updated: 2025/02/14 22:25:01 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *nb, bool *error)
 {
-	long	nbr;
-	int		index;
+	int		i;
 	int		sign;
+	long	result;
 
-	nbr = 0;
+	i = 0;
 	sign = 1;
-	if (*str == '+' || *str == '-')
+	result = 0;
+	*error = false;
+	while (nb[i] == 32 || (nb[i] >= 9 && nb[i] <= 13))
+		i++;
+	if (nb[i] == '+' || nb[i] == '-')
+		if (nb[i++] == '-')
+			sign *= -1;
+	while (nb[i] >= '0' && nb[i] <= '9')
 	{
-		if (*str == '-')
-			sign = -sign;
-		str++;
-		if (!(*str))
-			return (is_error(true), 0);
+		result = (result * 10) + (nb[i++] - '0');
+		if ((sign == 1 && result > INT_MAX)
+			|| (sign == -1 && (result * -1) < INT_MIN))
+			return (*error = true, 0);
 	}
-	while (*str >= '0' && *str <= '9')
-	{
-		index = (*str) - '0';
-		nbr = (nbr * 10) + index;
-		if (nbr > INT_MAX || nbr < INT_MIN)
-			return (is_error(true), 0);
-		str++;
-	}
-	if (*str)
-		return (is_error(true), 0);
-	return (nbr * sign);
+	if (nb[i])
+		*error = true;
+	return (sign * result);
 }
 
 void	freestr(char **str)
 {
 	char	**temp;
 
+	if (!str)
+		return ;
 	temp = str;
 	while (*temp)
 	{
@@ -77,18 +77,23 @@ bool	if_duplicate(t_list **list)
 
 bool	create_list(char **str, t_list **fin_list)
 {
-	int	temp;
+	int		temp;
+	bool	error;
 
 	temp = 0;
+	error = false;
 	while (*str)
 	{
-		temp = ft_atoi(*str);
+		temp = ft_atoi(*str, &error);
+		if (error == true)
+			return (true);
 		lstadd(fin_list, temp);
 		str++;
 	}
-	if (!fin_list || !*fin_list)
+	if (!fin_list || !*fin_list || error)
 		return (true);
-	if (if_duplicate(fin_list))
-		return (true);
+	if ((*fin_list)->next)
+		if (if_duplicate(fin_list))
+			return (true);
 	return (false);
 }

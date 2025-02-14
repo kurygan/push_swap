@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 18:26:01 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/01 04:21:30 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/14 21:55:34 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,27 @@ size_t	ft_strlen(const char *str)
 
 static char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	unsigned int	i;
-	char			*non_const_s;
+	size_t			i;
 	char			*subbed;
+	size_t			s_len;
 
 	if (!s)
 		return (NULL);
-	i = 0;
-	non_const_s = (char *)s;
-	if (ft_strlen(s) <= start)
+	s_len = ft_strlen(s);
+	if (s_len <= start)
 		return (ft_strdup(""));
-	if (len > ft_strlen(&s[start]))
-		len = ft_strlen(&s[start]);
-	subbed = malloc(sizeof(char) * len + 1);
+	if (len > s_len - start)
+		len = s_len - start;
+	subbed = malloc(sizeof(char) * (len + 1));
 	if (!subbed)
 		return (NULL);
-	while (i < start && non_const_s[i])
+	i = 0;
+	while (i < len && s[start + i])
+	{
+		subbed[i] = s[start + i];
 		i++;
-	ft_strncpy(subbed, &non_const_s[i], len);
+	}
+	subbed[i] = '\0';
 	return (subbed);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 05:00:23 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/14 15:06:19 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/14 21:47:50 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct s_rotate_calc
 char	**ft_split(char const *s);
 char	*ft_strdup(const char *s1);
 size_t	ft_strlen(const char *str);
-char	*ft_strncpy(char *dest, char *src, int len);
+char	*ft_strncpy(char *dest, const char *src, int len);
 void	freestr(char **str);
 
 // list things
@@ -92,6 +92,7 @@ void	set_median(t_list *temp, int len);
 t_list	*get_smallest_cost(t_list **a);
 void	sort_short (t_list **a, t_list **b, int *total);
 void	loop_sort_a(t_list **a, t_list **b, int *total);
+void	loop_sort_b(t_list **a, t_list **b, int *total);
 
 // calculate cost
 int		calculate_op(t_list **a, t_list **b, t_list *top_a, t_list *top_b);
