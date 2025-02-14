@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 23:45:48 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/13 19:24:22 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/13 20:42:39 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,10 @@ int	lstgetindex(t_list *target_node, t_list **list)
 	index = 0;
 	while (temp)
 	{
-		index++;
 		if (temp == target_node)
 			break ;
 		temp = temp->next;
+		index++;
 	}
 	return (index);
 }

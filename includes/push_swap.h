@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 05:00:23 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/13 19:21:22 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/13 23:32:26 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ t_list	*get_biggest(t_list **list);
 void	get_cost(t_list **costed, t_list **target);
 void	get_median(t_list **a, t_list **b);
 void	set_median(t_list *temp, int len);
+t_list	*get_smallest_cost(t_list **a);
 
 // calculate cost
 int		calculate_op(t_list **a, t_list **b, t_list *top_a, t_list *top_b);

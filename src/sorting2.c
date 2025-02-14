@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:34:28 by tylerlover9       #+#    #+#             */
-/*   Updated: 2025/02/13 19:33:16 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/13 23:33:03 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,10 @@ void	get_median(t_list **a, t_list **b)
 	len_b = lstsize(b);
 	temp_a = *a;
 	temp_b = *b;
-	set_median(temp_a, len_a);
-	set_median(temp_b, len_b);
+	if (lstsize(a) > 2)
+		set_median(temp_a, len_a);
+	if (lstsize(b) > 2)
+		set_median(temp_b, len_b);
 }
 
 void	set_median(t_list *temp, int len)
@@ -75,4 +77,22 @@ int	calculate_op(t_list **a, t_list **b, t_list *top_a, t_list *top_b)
 	calculate_rr(&ops);
 	calculate_rrr(&ops);
 	return (ops.ra + ops.rb + ops.rr + ops.rra + ops.rrb + ops.rrr);
+}
+
+t_list	*get_smallest_cost(t_list **a)
+{
+	t_list	*temp_a;
+	t_list	*lowest;
+
+	temp_a = *a;
+	lowest = NULL;
+	while(1)
+	{
+		if (!lowest || (lowest->cost > temp_a->cost))
+			lowest = temp_a;
+		if (temp_a->next == *a)
+			break ;
+		temp_a = temp_a->next;
+	}
+	return (lowest);
 }
