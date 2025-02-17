@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 21:54:08 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/14 22:25:01 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/17 23:51:46 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,13 @@ int	ft_atoi(const char *nb, bool *error)
 	sign = 1;
 	result = 0;
 	*error = false;
-	while (nb[i] == 32 || (nb[i] >= 9 && nb[i] <= 13))
-		i++;
 	if (nb[i] == '+' || nb[i] == '-')
+	{
+		if (!nb[i + 1])
+			*error = true;
 		if (nb[i++] == '-')
 			sign *= -1;
+	}
 	while (nb[i] >= '0' && nb[i] <= '9')
 	{
 		result = (result * 10) + (nb[i++] - '0');
