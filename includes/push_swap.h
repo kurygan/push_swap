@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 05:00:23 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/14 21:47:50 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/18 01:21:34 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,12 @@ void	rev_sort_a(t_list **a, t_list **b, int *total);
 void	get_smallest_target(t_list **a, t_list **b);
 void	get_biggest_target(t_list **a, t_list **b);
 t_list	*get_biggest(t_list **list);
-t_list *get_smallest(t_list **list);
+t_list	*get_smallest(t_list **list);
 void	get_cost(t_list **costed, t_list **target);
 void	get_median(t_list **a, t_list **b);
 void	set_median(t_list *temp, int len);
 t_list	*get_smallest_cost(t_list **a);
-void	sort_short (t_list **a, t_list **b, int *total);
+void	sort_short(t_list **a, t_list **b, int *total);
 void	loop_sort_a(t_list **a, t_list **b, int *total);
 void	loop_sort_b(t_list **a, t_list **b, int *total);
 
